@@ -11,7 +11,7 @@ public class Lienzo extends Canvas{
 	public Lienzo(){
 		this.lab = new Laberinto();
 		
-		this.setBackground(Color.cyan);
+		this.setBackground(Color.gray);
 		this.setSize(this.lab.getAncho(),lab.getLargo());
 		addMouseListener(new java.awt.event.MouseAdapter(){
 			@Override

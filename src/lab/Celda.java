@@ -42,7 +42,7 @@ public class Celda extends JComponent implements Const{
 		switch (tipo) {
 		case 'J' : g.drawImage(player, x, y, null); break;
 		case 'P' : g.drawImage(wall, x, y, null); break;	
-		case 'C' : g.drawImage(camino, x, y, null); break;
+		case 'V' : g.drawImage(camino, x, y, null); break;
 		}
 	}
 	

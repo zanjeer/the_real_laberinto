@@ -57,15 +57,15 @@ public class Laberinto extends JComponent implements Const {
 			mover_arriba();
 		}
 		if( evento.getKeyCode() == 40 ){
-			System.out.println("Mover arriba");
+			System.out.println("Mover abajo");
 			mover_abajo();
 		}
 		if( evento.getKeyCode() == 37 ){
-			System.out.println("Mover arriba");
+			System.out.println("Mover izquerda");
 			mover_izquerda();
 		}
 		if( evento.getKeyCode() == 39 ){
-			System.out.println("Mover arriba");
+			System.out.println("Mover derecha");
 			mover_derecha();
 		}
 		
@@ -75,7 +75,7 @@ public class Laberinto extends JComponent implements Const {
 	private void mover_arriba(){
 		System.out.println("player :" + player_i + " ," + player_j);
 		if(player_j>0){
-			if(casillas[player_i][player_j].getTipo() == 'P'){
+			if(casillas[player_i][player_j-1].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_j-=1;
 				casillas[player_i][player_j].setTipo('J');
@@ -91,7 +91,7 @@ public class Laberinto extends JComponent implements Const {
 	private void mover_abajo(){
 		System.out.println("player :" + player_i + " ," + player_j);
 		if(player_j < casillas.length){
-			if(casillas[player_i][player_j].getTipo() == 'P'){
+			if(casillas[player_i][player_j+1].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_j+=1;
 				casillas[player_i][player_j].setTipo('J');
@@ -108,7 +108,7 @@ public class Laberinto extends JComponent implements Const {
 	private void mover_izquerda(){
 		System.out.println("player :" + player_i + " ," + player_j);
 		if(player_i>0){
-			if(casillas[player_i][player_j].getTipo() == 'P'){
+			if(casillas[player_i-1][player_j].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_i-=1;
 				casillas[player_i][player_j].setTipo('J');
@@ -125,7 +125,7 @@ public class Laberinto extends JComponent implements Const {
 	private void mover_derecha(){
 		System.out.println("player :" + player_i + " ," + player_j);
 		if(player_i<casillas.length){
-			if(casillas[player_i][player_j].getTipo() == 'P'){
+			if(casillas[player_i+1][player_j].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_i+=1;
 				casillas[player_i][player_j].setTipo('J');
