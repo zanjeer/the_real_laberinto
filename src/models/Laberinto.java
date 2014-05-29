@@ -1,4 +1,4 @@
-package lab;
+package models;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -14,7 +14,7 @@ public class Laberinto extends JComponent implements Const {
 	
 	
 	public Laberinto(){
-		this.casillas = new Celda[n][m];      
+		this.casillas = new Celda[n][m];
 	    for(int i=0;i< n;i++){
 	    	for(int j=0;j<m;j++){
 	    		this.casillas[i][j] = new Celda(i+(i*Const.longitud_casilla),
@@ -23,7 +23,7 @@ public class Laberinto extends JComponent implements Const {
 	    }    
 	   player_i = 0;
 	   player_j = 0;
-	   casillas[player_i][player_j].setTipo('J');
+	   this.casillas[player_i][player_j].setTipo('J');
 	   this.ancho = n*longitud_casilla;
 	   this.largo = m*longitud_casilla;
 	   this.setSize(ancho,largo);	    
@@ -42,9 +42,7 @@ public class Laberinto extends JComponent implements Const {
 	public void update(Graphics g){
 		for(int i=0;i<n;i++){
 			for(int j=0;j<m;j++){
-				
 					this.casillas[i][j].update(g);
-				
 			}
 		}
 		
@@ -71,15 +69,26 @@ public class Laberinto extends JComponent implements Const {
 		
 	}
 	
+	
+	public  void animar_player(char a){
+		switch (a) {
+		case 'S' : mover_abajo();break;
+		case 'W' : mover_arriba();break;
+		case 'D' : mover_derecha();break;
+		case 'A' : mover_izquerda();break;	
+		}
+	}
+	
+	
 
 	private void mover_arriba(){
-		System.out.println("player :" + player_i + " ," + player_j);
+		System.out.println("player: " + player_i + " ," + player_j);
 		if(player_j>0){
 			if(casillas[player_i][player_j-1].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_j-=1;
-				casillas[player_i][player_j].setTipo('J');
-				System.out.println("player se movio a:" + player_i + " ," + player_j);
+				casillas[player_i][player_j].setTipo('W');
+				System.out.println("player se movio a: " + player_i + " ," + player_j);
 			}else {
 				System.out.println("pared pls");
 			}
@@ -88,14 +97,15 @@ public class Laberinto extends JComponent implements Const {
 		}
 	}
 	
+	
 	private void mover_abajo(){
-		System.out.println("player :" + player_i + " ," + player_j);
-		if(player_j < casillas.length){
+		System.out.println("player: " + player_i + " ," + player_j);
+		if(player_j < casillas.length-1){
 			if(casillas[player_i][player_j+1].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_j+=1;
 				casillas[player_i][player_j].setTipo('J');
-				System.out.println("player se movio a:" + player_i + " ," + player_j);
+				System.out.println("player se movio a: " + player_i + " ," + player_j);
 			}else {
 				System.out.println("pared pls");
 			}
@@ -106,13 +116,13 @@ public class Laberinto extends JComponent implements Const {
 	}
 	
 	private void mover_izquerda(){
-		System.out.println("player :" + player_i + " ," + player_j);
+		System.out.println("player: " + player_i + " ," + player_j);
 		if(player_i>0){
 			if(casillas[player_i-1][player_j].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_i-=1;
-				casillas[player_i][player_j].setTipo('J');
-				System.out.println("player se movio a:" + player_i + " ," + player_j);
+				casillas[player_i][player_j].setTipo('A');
+				System.out.println("player se movio a: " + player_i + " ," + player_j);
 			}else {
 				System.out.println("pared pls");
 			}
@@ -123,13 +133,13 @@ public class Laberinto extends JComponent implements Const {
 	}
 	
 	private void mover_derecha(){
-		System.out.println("player :" + player_i + " ," + player_j);
-		if(player_i<casillas.length){
+		System.out.println("player: " + player_i + " ," + player_j);
+		if(player_i<casillas.length-1){
 			if(casillas[player_i+1][player_j].getTipo() != 'P'){
 				casillas[player_i][player_j].setTipo('V');
 				player_i+=1;
-				casillas[player_i][player_j].setTipo('J');
-				System.out.println("player se movio a:" + player_i + " ," + player_j);
+				casillas[player_i][player_j].setTipo('D');
+				System.out.println("player se movio a: " + player_i + " ," + player_j);
 			}else {
 				System.out.println("pared pls");
 			}
@@ -164,6 +174,22 @@ public class Laberinto extends JComponent implements Const {
 
 	public void setCasillas(Celda[][] casillas) {
 		this.casillas = casillas;
+	}
+
+	public int getPlayer_i() {
+		return player_i;
+	}
+
+	public void setPlayer_i(int player_i) {
+		this.player_i = player_i;
+	}
+
+	public int getPlayer_j() {
+		return player_j;
+	}
+
+	public void setPlayer_j(int player_j) {
+		this.player_j = player_j;
 	}
 	
 	
