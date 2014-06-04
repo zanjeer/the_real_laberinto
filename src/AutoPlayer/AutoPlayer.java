@@ -24,17 +24,12 @@ public class AutoPlayer extends TimerTask implements Const {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-           
-             
-                  
+            }            
             lienzo.getLab().animar_player(c);
-            lienzo.repaint();   
-            
+            lienzo.repaint();      
            /* if(System.currentTimeMillis() - scheduledExecutionTime() >= 950) {        
                 return;
-              }  */    
-            
+              }  */        
         }              
     }
 }

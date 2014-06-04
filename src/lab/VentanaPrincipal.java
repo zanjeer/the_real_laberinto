@@ -26,5 +26,4 @@ public class VentanaPrincipal extends JFrame implements Const{
                     lienzo.getHeight()+60);
         this.setLocationRelativeTo(null);
     }
-
 }
