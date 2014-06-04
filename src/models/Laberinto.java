@@ -10,23 +10,47 @@ public class Laberinto extends JComponent implements Const {
     private Celda[][] casillas;
     private int player_i,player_j;
 
-
-
     public Laberinto(){
-        this.casillas = new Celda[n][m];
+        casillas = new Celda[n][m];
         for(int i=0;i< n;i++){
             for(int j=0;j<m;j++){
-                this.casillas[i][j] = new Celda(i+(i*Const.longitud_casilla),
-                                                j+(j*Const.longitud_casilla),'V');
-        }}
-        player_i = 0;
-        player_j = 0;
-        this.casillas[player_j][player_i].setTipo('J');
-        this.ancho = n*longitud_casilla;
-        this.largo = m*longitud_casilla;
-        this.setSize(ancho,largo);	    
-    }
+                casillas[i][j] = new Celda(i+(i*Const.longitud_casilla),
+                                            j+(j*Const.longitud_casilla),'V');
+        }
 
+        ancho = n*longitud_casilla;
+        largo = m*longitud_casilla;
+        setSize(ancho,largo);	    
+    }
+}
+    
+    public void player_ini(int i,int j){
+    	this.setPlayer_j(j);
+    	this.setPlayer_i(i);
+    	this.casillas[i][j].setTipo('J');
+    }
+    
+    public void nivel_ini(int k){
+    	 for (int c = 0; c < n; c++){
+    		 this.casillas[n-1][c].setTipo('P');
+             this.casillas[0][c].setTipo('P');   
+         }
+         for (int l = 0; l < m; l++) {
+             this.casillas[l][0].setTipo('P');
+         	 this.casillas[l][m-1].setTipo('P');
+         }
+         
+         int obstM = (n * m)/k;
+         for (int i=0; i<obstM ; i++){
+        	 int x = (int)(Math.random()*n);
+        	 int y = (int)(Math.random()*m);
+        	 if( x!=n-k && y != m-k )
+        		 this.casillas[x][y].setTipo('P');
+         }
+
+    }
+    
+    
     @Override
     public void paintComponent(Graphics g){
         for(int i=0;i<n;i++)
@@ -104,6 +128,7 @@ public class Laberinto extends JComponent implements Const {
             }else System.out.println("pared pls");
         }else System.out.println("tablero pls");
     }
+    
 
     public int getAncho() {
         return ancho;

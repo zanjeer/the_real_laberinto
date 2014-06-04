@@ -11,10 +11,10 @@ import javax.swing.JComponent;
 
 public class Celda extends JComponent implements Const{
     private int x,y;
-    private char tipo;
+    private Character tipo;
     private BufferedImage player,player_up,player_left,player_right,camino,wall;
 
-    public Celda(int x, int y,char tipo){
+    public Celda(int x, int y,Character tipo){
         this.x = x;
         this.y = y;
         this.tipo = tipo;
@@ -75,7 +75,7 @@ public class Celda extends JComponent implements Const{
         return tipo;
     }
 
-    public void setTipo(char tipo) {
+    public void setTipo(Character tipo) {
         this.tipo = tipo;
     }
 

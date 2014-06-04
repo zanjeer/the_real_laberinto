@@ -83,7 +83,6 @@ public class Busqueda {
         }
     }
 
-
     private void derecha(Estado actual) {
         int i = actual.getCelda().getX();
         int j = actual.getCelda().getY();
@@ -97,7 +96,6 @@ public class Busqueda {
             }
         }	
     }
-
 
     private void izquerda(Estado actual) {
         int i = actual.getCelda().getX();

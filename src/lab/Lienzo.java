@@ -15,6 +15,9 @@ public class Lienzo extends Canvas{
 
     public Lienzo(){
         this.lab = new Laberinto();
+        lab.player_ini(2, 2);
+        lab.nivel_ini(3);
+        
         this.setBackground(Color.gray);
         this.setSize(this.lab.getAncho(),lab.getLargo());
 
@@ -55,7 +58,7 @@ public class Lienzo extends Canvas{
     	Celda data_fin;
         Busqueda b;
     	data_inicial = new Celda(x,y,' ');
-        data_fin = new Celda(19,19,' ');
+        data_fin = new Celda(17,17,' ');
         inicio = new Estado(data_inicial, null, ' ');
         meta = new Estado(data_fin, null, ' ');    
         b = new Busqueda(inicio, meta,this);
