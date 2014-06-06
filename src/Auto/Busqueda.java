@@ -1,4 +1,4 @@
-package AutoPlayer;
+package Auto;
 
 import java.util.ArrayList;
 import lab.Lienzo;

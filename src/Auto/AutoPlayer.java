@@ -1,4 +1,4 @@
-package AutoPlayer;
+package Auto;
 
 import java.util.ArrayList;
 import java.util.TimerTask;
@@ -27,9 +27,9 @@ public class AutoPlayer extends TimerTask implements Const {
             }            
             lienzo.getLab().animar_player(c);
             lienzo.repaint();      
-           /* if(System.currentTimeMillis() - scheduledExecutionTime() >= 950) {        
+            /*if(System.currentTimeMillis() - scheduledExecutionTime() >= 950) {        
                 return;
-              }  */        
+              }   */       
         }              
     }
 }

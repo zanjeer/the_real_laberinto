@@ -12,7 +12,8 @@ import javax.swing.JComponent;
 public class Celda extends JComponent implements Const{
     private int x,y;
     private Character tipo;
-    private BufferedImage player,player_up,player_left,player_right,camino,wall;
+    private BufferedImage player,player_up,player_left,player_right,camino,wall,
+    						enemy,enemy_up,enemy_left,enemy_right;
 
     public Celda(int x, int y,Character tipo){
         this.x = x;
@@ -26,6 +27,10 @@ public class Celda extends JComponent implements Const{
             player_right = ImageIO.read(new File("src/imagenes/player_right.png"));
             camino = ImageIO.read(new File("src/imagenes/camino.png"));
             wall = ImageIO.read(new File("src/imagenes/muro.png"));
+            enemy = ImageIO.read(new File("src/imagenes/enemy.png"));
+            enemy_up = ImageIO.read(new File("src/imagenes/enemy_up.png"));
+            enemy_left = ImageIO.read(new File("src/imagenes/enemy_left.png"));
+            enemy_right = ImageIO.read(new File("src/imagenes/enemy_right.png"));
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -45,6 +50,10 @@ public class Celda extends JComponent implements Const{
         case 'D' : g.drawImage(player_right, x, y, null); break;
         case 'P' : g.drawImage(wall, x, y, null); break;	
         case 'V' : g.drawImage(camino, x, y, null); break;
+        case '2' : g.drawImage(enemy, x, y, null); break;
+        case '5' : g.drawImage(enemy_up, x, y, null); break;
+        case '1' : g.drawImage(enemy_left, x, y, null); break;
+        case '3' : g.drawImage(enemy_right, x, y, null); break;
         }
     }
 

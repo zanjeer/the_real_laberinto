@@ -1,4 +1,4 @@
-package AutoPlayer;
+package Auto;
 
 import models.Celda;
 

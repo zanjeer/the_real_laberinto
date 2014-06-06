@@ -5,8 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import AutoPlayer.Busqueda;
-import AutoPlayer.Estado;
+
+import Auto.Busqueda;
+import Auto.Estado;
 import models.Celda;
 import models.Laberinto;
 
@@ -64,7 +65,20 @@ public class Lienzo extends Canvas{
         b = new Busqueda(inicio, meta,this);
     return b.buscar();
     }
-    	
+    
+    public ArrayList<Character> iniciar_enemy(int x, int y){
+    	Estado inicio, meta;
+        Celda data_inicial;
+    	Celda data_fin;
+        Busqueda b;
+    	data_inicial = new Celda(x,y,' ');
+        data_fin = new Celda(lab.getPlayer_i(),lab.getPlayer_j(),' ');
+        inicio = new Estado(data_inicial, null, ' ');
+        meta = new Estado(data_fin, null, ' ');    
+        b = new Busqueda(inicio, meta,this);
+    return b.buscar();
+    }
+    
     @Override
     public void paint(Graphics g){
         this.lab.paintComponent(g);

@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/lab/VentanaPrincipal.java</file>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/models/Laberinto.java</file>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/models/Celda.java</file>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/lab/Lienzo.java</file>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/lab/Main.java</file>
-            <file>file:/D:/workspace/the%20real%20laberinto/src/AutoPlayer/AutoPlayer.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/AutoPlayer/Estado.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/AutoPlayer/AutoPlayer.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/AutoPlayer/Busqueda.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/lab/Lienzo.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/lab/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/models/Celda.java</file>
+            <file>file:/C:/Users/pipo/Documents/NetBeansProjects/the_real_laberinto/src/models/Laberinto.java</file>
         </group>
     </open-files>
 </project-private>
