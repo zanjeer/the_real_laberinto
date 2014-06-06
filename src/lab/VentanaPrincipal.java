@@ -5,8 +5,8 @@ import java.util.Timer;
 
 import javax.swing.JFrame;
 
-import Auto.AutoEnemy;
-import Auto.AutoPlayer;
+import player.AutoPlayer;
+import enemy.AutoEnemy;
 import models.Const;
 
 public class VentanaPrincipal extends JFrame implements Const{

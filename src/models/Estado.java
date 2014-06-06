@@ -1,6 +1,5 @@
-package Auto;
+package models;
 
-import models.Celda;
 
 public class Estado {
 	private Celda celda;

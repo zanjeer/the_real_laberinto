@@ -2,15 +2,14 @@ package models;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JComponent;
 
 public class Laberinto extends JComponent implements Const {
 	
     private int ancho,largo;
     private Celda[][] casillas;
-    private int player_i,player_j,
-    			enemy_i,enemy_j;
-
+   
     public Laberinto(){
         casillas = new Celda[n][m];
         for(int i=0;i< n;i++){
@@ -19,23 +18,10 @@ public class Laberinto extends JComponent implements Const {
                                             j+(j*Const.longitud_casilla),'V');
             }   
         }
-        enemy_ini(17,17);
-        
+           
         ancho = n*longitud_casilla;
         largo = m*longitud_casilla;
         setSize(ancho,largo);
-    }
-    
-    public void player_ini(int i,int j){
-    	this.setPlayer_j(j);
-    	this.setPlayer_i(i);
-    	this.casillas[i][j].setTipo('J');
-    }
-    
-    public void enemy_ini(int i,int j){
-    	this.setEnemy_j(j);
-    	this.setEnemy_i(i);
-    	this.casillas[i][j].setTipo('2');
     }
     
     public void nivel_ini(int k){
@@ -57,7 +43,6 @@ public class Laberinto extends JComponent implements Const {
         }
     }
     
-    
     @Override
     public void paintComponent(Graphics g){
         for(int i=0;i<n;i++)
@@ -72,120 +57,6 @@ public class Laberinto extends JComponent implements Const {
                 casillas[i][j].update(g);     
     }
 
-    public void verTecla(KeyEvent evento){
-        if( evento.getKeyCode() == 38 )mover_arriba();
-        if( evento.getKeyCode() == 40 )mover_abajo();
-        if( evento.getKeyCode() == 37 )mover_izquerda();
-        if( evento.getKeyCode() == 39 )mover_derecha();
-    }
-
-    public  void animar_player(char a){
-        switch (a) {
-        case 'S' : mover_abajo();break;
-        case 'W' : mover_arriba();break;
-        case 'D' : mover_derecha();break;
-        case 'A' : mover_izquerda();break;	
-        }
-    }
-    
-    public  void animar_enemy(char a){
-        switch (a) {
-        case 'S' : enemy_abajo();break;
-        case 'W' : enemy_arriba();break;
-        case 'D' : enemy_derecha();break;
-        case 'A' : enemy_izquerda();break;	
-        }
-    }
-
-    private void mover_arriba(){
-        System.out.println("Player: " + player_i + "," + player_j);
-        if(player_j>0){
-            if(casillas[player_i][player_j-1].getTipo() != 'P'){
-                casillas[player_i][player_j].setTipo('V');
-                player_j-=1;
-                casillas[player_i][player_j].setTipo('W');
-                System.out.println("Se movio arriba: " + player_i + "," + player_j);
-            }else System.out.println("pared pls");   
-        }else System.out.println("tablero pls");  
-    }
-
-    private void mover_abajo(){
-        System.out.println("Player: " + player_i + "," + player_j);
-        if(player_j < casillas.length-1){
-            if(casillas[player_i][player_j+1].getTipo() != 'P'){
-                casillas[player_i][player_j].setTipo('V');
-                player_j+=1;
-                casillas[player_i][player_j].setTipo('J');
-                System.out.println("Se movio abajo: " + player_i + "," + player_j);
-            }else System.out.println("pared pls");  
-        }else  System.out.println("tablero pls");     
-    }
-
-    private void mover_izquerda(){
-        System.out.println("Player: " + player_i + "," + player_j);
-        if(player_i>0){
-            if(casillas[player_i-1][player_j].getTipo() != 'P'){
-                casillas[player_i][player_j].setTipo('V');
-                player_i-=1;
-                casillas[player_i][player_j].setTipo('A');
-                System.out.println("Se movio izq: " + player_i + "," + player_j);
-            }else System.out.println("pared pls");
-        }else System.out.println("tablero pls");  
-    }
-
-    private void mover_derecha(){
-        System.out.println("Player: " + player_i + "," + player_j);
-        if(player_i<casillas.length-1){
-            if(casillas[player_i+1][player_j].getTipo() != 'P'){
-                casillas[player_i][player_j].setTipo('V');
-                player_i+=1;
-                casillas[player_i][player_j].setTipo('D');
-                System.out.println("Se movio der: " + player_i + "," + player_j);
-            }else System.out.println("pared pls");
-        }else System.out.println("tablero pls");
-    }
-    
-    private void enemy_arriba(){
-        if(enemy_j>0){
-            if(casillas[enemy_i][enemy_j-1].getTipo() != 'P'){
-                casillas[enemy_i][enemy_j].setTipo('V');
-                enemy_j-=1;
-                casillas[enemy_i][enemy_j].setTipo('5');
-            }  
-        }  
-    }
-
-    private void enemy_abajo(){
-        if(enemy_j < casillas.length-1){
-            if(casillas[enemy_i][enemy_j+1].getTipo() != 'P'){
-                casillas[enemy_i][enemy_j].setTipo('V');
-                enemy_j+=1;
-                casillas[enemy_i][enemy_j].setTipo('2');           
-            }  
-        }    
-    }
-
-    private void enemy_izquerda(){      
-        if(enemy_i>0){
-            if(casillas[enemy_i-1][enemy_j].getTipo() != 'P'){
-                casillas[enemy_i][enemy_j].setTipo('V');
-                enemy_i-=1;
-                casillas[enemy_i][enemy_j].setTipo('1');               
-            }
-        } 
-    }
-
-    private void enemy_derecha(){   
-        if(enemy_i<casillas.length-1){
-            if(casillas[enemy_i+1][enemy_j].getTipo() != 'P'){
-                casillas[enemy_i][enemy_j].setTipo('V');
-                enemy_i+=1;
-                casillas[enemy_i][enemy_j].setTipo('3');             
-            }
-        }
-    }
-    
-    
     public int getAncho() {
         return ancho;
     }
@@ -210,36 +81,4 @@ public class Laberinto extends JComponent implements Const {
         this.casillas = casillas;
     }
 
-    public int getPlayer_i() {
-        return player_i;
-    }
-
-    public void setPlayer_i(int player_i) {
-        this.player_i = player_i;
-    }
-
-    public int getPlayer_j() {
-        return player_j;
-    }
-
-    public void setPlayer_j(int player_j) {
-        this.player_j = player_j;
-    }
-
-	public int getEnemy_i() {
-		return enemy_i;
-	}
-
-	public void setEnemy_i(int enemy_i) {
-		this.enemy_i = enemy_i;
-	}
-
-	public int getEnemy_j() {
-		return enemy_j;
-	}
-
-	public void setEnemy_j(int enemy_j) {
-		this.enemy_j = enemy_j;
-	}
-	
 }

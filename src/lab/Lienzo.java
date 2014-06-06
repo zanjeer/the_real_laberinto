@@ -6,17 +6,27 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import Auto.Busqueda;
-import Auto.Estado;
+import IA.Busqueda_anchura;
+import player.Player;
+import enemy.Enemy;
 import models.Celda;
+import models.Estado;
 import models.Laberinto;
 
 public class Lienzo extends Canvas{
     private Laberinto lab;
-
+    private Enemy enemigo;
+    private Player jugador;
+    
+    
     public Lienzo(){
         this.lab = new Laberinto();
-        lab.player_ini(2, 2);
+        
+        enemigo = new Enemy(lab);
+        enemigo.ini(17,17);
+        
+        jugador = new Player(lab);
+        jugador.ini(2, 2);
         lab.nivel_ini(3);
         
         this.setBackground(Color.gray);
@@ -33,7 +43,7 @@ public class Lienzo extends Canvas{
         addKeyListener(new java.awt.event.KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e){
-                lab.verTecla(e);
+                jugador.verTecla(e);
                 repaint();
             }
         });
@@ -57,12 +67,12 @@ public class Lienzo extends Canvas{
     	Estado inicio, meta;
         Celda data_inicial;
     	Celda data_fin;
-        Busqueda b;
+        Busqueda_anchura b;
     	data_inicial = new Celda(x,y,' ');
         data_fin = new Celda(17,17,' ');
         inicio = new Estado(data_inicial, null, ' ');
         meta = new Estado(data_fin, null, ' ');    
-        b = new Busqueda(inicio, meta,this);
+        b = new Busqueda_anchura(inicio, meta,this);
     return b.buscar();
     }
     
@@ -70,12 +80,12 @@ public class Lienzo extends Canvas{
     	Estado inicio, meta;
         Celda data_inicial;
     	Celda data_fin;
-        Busqueda b;
+        Busqueda_anchura b;
     	data_inicial = new Celda(x,y,' ');
-        data_fin = new Celda(lab.getPlayer_i(),lab.getPlayer_j(),' ');
+        data_fin = new Celda(jugador.getPlayer_i(),jugador.getPlayer_j(),' ');
         inicio = new Estado(data_inicial, null, ' ');
         meta = new Estado(data_fin, null, ' ');    
-        b = new Busqueda(inicio, meta,this);
+        b = new Busqueda_anchura(inicio, meta,this);
     return b.buscar();
     }
     
@@ -96,5 +106,15 @@ public class Lienzo extends Canvas{
     public void setLab(Laberinto lab) {
         this.lab = lab;
     }
+
+	public Enemy getEnemigo() {
+		return enemigo;
+	}
+
+	public Player getJugador() {
+		return jugador;
+	}
+    
+    
 
 }

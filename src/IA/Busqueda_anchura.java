@@ -1,10 +1,12 @@
-package Auto;
+package IA;
 
 import java.util.ArrayList;
+
 import lab.Lienzo;
 import models.Celda;
+import models.Estado;
 
-public class Busqueda {
+public class Busqueda_anchura {
 
     private ArrayList<Estado> abiertos;
     private ArrayList<Estado> cerrados;
@@ -12,7 +14,7 @@ public class Busqueda {
     private Estado meta;
     private Lienzo lienzo;
 
-    public Busqueda(Estado actual, Estado meta,Lienzo lienzo) {
+    public Busqueda_anchura(Estado actual, Estado meta,Lienzo lienzo) {
         this.abiertos = new ArrayList<>();
         this.cerrados = new ArrayList<>();
         this.actual = actual;
